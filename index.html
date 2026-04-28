@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>HotShot Fabrics | Premium Streetwear & Essentials</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" id="header">
+    <div class="container header-flex">
+        <div class="logo-area">
+            <div class="logo-badge" id="logoPreview">
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class="logo-text">
+                <h1>HotShot Fabrics</h1>
+                <p>Premium Streetwear <span>•</span> ZAR Prices</p>
+            </div>
+        </div>
+        
+        <div class="header-actions">
+            <div class="search-bar" id="searchBar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+                <button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <span class="hero-tag">🔥 New Season Drop</span>
+        <h2>Wear The <span class="gradient-text">Movement</span></h2>
+        <p>Authentic streetwear crafted for those who set trends, not follow them. Grade-A fabrics, bold designs, South African owned.</p>
+        <button class="hero-btn" onclick="document.getElementById('shopSection').scrollIntoView({behavior:'smooth'})">
+            Shop Now <i class="fas fa-arrow-down"></i>
+        </button>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-card card-1"></div>
+        <div class="hero-card card-2"></div>
+        <div class="hero-card card-3"></div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="container" id="shopSection">
+    <!-- Category Tabs -->
+    <div class="section-header">
+        <h3 class="section-title">All Products</h3>
+        <div class="category-tabs" id="categoryTabs"></div>
+    </div>
+    
+    <!-- Products Grid -->
+    <div id="productsGrid" class="products-grid">
+        <!-- Skeleton loading injected by JS -->
+    </div>
+    
+    <!-- Empty State (hidden by default) -->
+    <div id="emptyState" class="empty-state" style="display:none;">
+        <i class="fas fa-search"></i>
+        <h4>No items found</h4>
+        <p>Try adjusting your search or category filter</p>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <div class="logo-badge sm"><i class="fas fa-fire"></i></div>
+            <h4>HotShot Fabrics</h4>
+            <p>Premium streetwear brand based in South Africa. Authentic designs, quality fabrics, bold statements.</p>
+        </div>
+        <div class="footer-links">
+            <h5>Shop</h5>
+            <a href="#">T-Shirts</a>
+            <a href="#">Hoodies</a>
+            <a href="#">Full Sets</a>
+            <a href="#">Headwear</a>
+        </div>
+        <div class="footer-links">
+            <h5>Support</h5>
+            <a href="#">Size Guide</a>
+            <a href="#">Shipping Info</a>
+            <a href="#">Returns</a>
+        </div>
+        <div class="footer-contact">
+            <h5>Contact</h5>
+            <p><i class="fab fa-whatsapp"></i> 083 416 0993</p>
+            <p><i class="fab fa-instagram"></i> @hotshotfabrics</p>
+            <p><i class="far fa-envelope"></i> Hotshotfabrics15@gmail.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 HotShot Fabrics. All items authentic. Designed with 🔥 in SA.</p>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Cart Drawer -->
+<div id="cartOverlay" class="cart-overlay">
+    <div class="cart-drawer">
+        <div class="cart-header">
+            <div>
+                <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+                <span class="cart-subhead"><span id="cartItemCount">0</span> items</span>
+            </div>
+            <button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cartItemsList" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotalAmount">R 0</span>
+            </div>
+            <div class="cart-note">
+                <i class="fas fa-info-circle"></i> Shipping calculated at checkout
+            </div>
+            <div class="order-buttons">
+                <button class="order-wa" id="orderWhatsAppBtn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Order
+                </button>
+                <button class="order-email" id="orderEmailBtn">
+                    <i class="far fa-envelope"></i> Email Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick View Modal -->
+<div id="quickViewModal" class="qv-modal">
+    <div class="qv-content">
+        <button class="qv-close" id="qvClose"><i class="fas fa-times"></i></button>
+        <div class="qv-grid">
+            <div class="qv-image-area">
+                <div class="qv-image" id="qvImage"></div>
+                <div class="qv-badges" id="qvBadges"></div>
+            </div>
+            <div class="qv-details">
+                <span class="qv-category" id="qvCategory">Category</span>
+                <h2 class="qv-name" id="qvName">Product Name</h2>
+                <div class="qv-price" id="qvPrice">R 0</div>
+                <p class="qv-desc" id="qvDesc">Premium quality streetwear item from HotShot Fabrics.</p>
+                
+                <div class="qv-section">
+                    <label>Size</label>
+                    <div class="size-selector" id="sizeSelector">
+                        <button class="size-btn" data-size="S">S</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn active" data-size="L">L</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                        <button class="size-btn" data-size="XXL">XXL</button>
+                    </div>
+                </div>
+                
+                <div class="qv-section">
+                    <label>Quantity</label>
+                    <div class="qty-selector">
+                        <button class="qty-minus" id="qvQtyMinus"><i class="fas fa-minus"></i></button>
+                        <input type="number" id="qvQtyInput" value="1" min="1" max="10" readonly>
+                        <button class="qty-plus" id="qvQtyPlus"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <button class="qv-add-btn" id="qvAddBtn">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+                
+                <div class="qv-meta">
+                    <span><i class="fas fa-check-circle"></i> In Stock</span>
+                    <span><i class="fas fa-truck"></i> Nationwide Delivery</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Name Modal -->
+<div id="nameModal" class="name-modal">
+    <div class="name-modal-content">
+        <div class="modal-icon"><i class="fas fa-user-circle"></i></div>
+        <h3>Almost there!</h3>
+        <p>Enter your name to complete your order</p>
+        <input type="text" id="customerNameInput" placeholder="Your full name" autocomplete="name">
+        <button id="confirmNameBtn">Place Order <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer" class="toast-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
