@@ -161,10 +161,10 @@ export function Navbar() {
         {/* Top Announcement Bar */}
         <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-black text-xs font-bold text-center py-2 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMCwwLDAsMC4xKSIvPjwvc3ZnPg==')] opacity-30" />
-          <span className="relative inline-flex items-center gap-2">
-            <Sparkles className="w-3 h-3" />
-            FREE SHIPPING ON ORDERS OVER R1,500 | WHATSAPP: 083 416 0993
-            <Sparkles className="w-3 h-3" />
+          <span className="relative flex flex-wrap items-center justify-center gap-2 px-2">
+            <Sparkles className="w-3 h-3 flex-shrink-0" />
+            <span className="break-words">FREE SHIPPING ON ORDERS OVER R1,500 | WHATSAPP: 083 416 0993</span>
+            <Sparkles className="w-3 h-3 flex-shrink-0" />
           </span>
         </div>
 
@@ -381,8 +381,8 @@ export function Navbar() {
               onMouseLeave={() => setIsMegaMenuOpen(false)}
               className="absolute top-full left-0 right-0 bg-zinc-900/98 backdrop-blur-xl border-t border-zinc-800/50 shadow-2xl overflow-hidden"
             >
-              <div className="max-w-[1440px] mx-auto px-8 py-8">
-                <div className="grid grid-cols-4 gap-8">
+              <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                   {categories.slice(0, 4).map((cat) => (
                     <div key={cat.id}>
                       <h3 className="font-bold text-base mb-4 text-orange-500 flex items-center gap-2">

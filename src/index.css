@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 @layer base {
-  body {
+  html, body {
+    overflow-x: hidden;
     @apply bg-black text-white antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 
   /* Smooth focus ring for keyboard nav */

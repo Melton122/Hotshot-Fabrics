@@ -633,7 +633,7 @@ export function ShopPage() {
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 pr-4 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-sm focus:outline-none focus:border-orange-500 w-48 lg:w-64 transition-colors"
+                className="pl-9 pr-4 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-sm focus:outline-none focus:border-orange-500 w-40 sm:w-48 lg:w-64 transition-colors"
               />
             </div>
 

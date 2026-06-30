@@ -584,7 +584,7 @@ export function ProductPage({ productSlug }: { productSlug: string }) {
 
               {/* Thumbnail Strip */}
               {images.length > 1 && (
-                <div ref={imageScrollRef} className="flex gap-2 overflow-x-auto pb-1 scrollbar-thin">
+                <div ref={imageScrollRef} className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                   {images.map((img, i) => (
                     <button 
                       key={img.id || i} 
@@ -812,7 +812,7 @@ export function ProductPage({ productSlug }: { productSlug: string }) {
                     whileTap={{ scale: outOfStock ? 1 : 0.98 }} 
                     onClick={addToCart} 
                     disabled={addingToCart || outOfStock}
-                    className="flex-1 min-w-[180px] py-3 bg-gradient-to-r from-orange-500 to-orange-600 disabled:from-zinc-800 disabled:to-zinc-800 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 disabled:shadow-none transition-all"
+                    className="flex-1 min-w-0 sm:min-w-[180px] py-3 bg-gradient-to-r from-orange-500 to-orange-600 disabled:from-zinc-800 disabled:to-zinc-800 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 disabled:shadow-none transition-all"
                   >
                     {addingToCart ? <Loader2 className="w-5 h-5 animate-spin" /> : outOfStock ? "Out of Stock" : <><ShoppingBag className="w-5 h-5" /> Add to Cart</>}
                   </motion.button>
@@ -871,7 +871,7 @@ export function ProductPage({ productSlug }: { productSlug: string }) {
               TABS: Description | Reviews | Shipping
               ════════════════════════════════════════ */}
           <div className="mt-16">
-            <div className="flex gap-6 border-b border-zinc-800 mb-8 overflow-x-auto">
+            <div className="flex gap-6 border-b border-zinc-800 mb-8 overflow-x-auto scrollbar-hide pb-1">
               {([
                 { key: "description" as const, label: "Description" },
                 { key: "reviews" as const, label: `Reviews (${reviews.length})` },
@@ -992,7 +992,7 @@ export function ProductPage({ productSlug }: { productSlug: string }) {
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto scrollbar-hide">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-zinc-800">
