@@ -159,12 +159,13 @@ export function Navbar() {
         }`}
       >
         {/* Top Announcement Bar */}
-        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-black text-xs font-bold text-center py-2 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-black text-[10px] sm:text-xs font-bold text-center py-2 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMCwwLDAsMC4xKSIvPjwvc3ZnPg==')] opacity-30" />
-          <span className="relative flex flex-wrap items-center justify-center gap-2 px-2">
-            <Sparkles className="w-3 h-3 flex-shrink-0" />
-            <span className="break-words">FREE SHIPPING ON ORDERS OVER R1,500 | WHATSAPP: 083 416 0993</span>
-            <Sparkles className="w-3 h-3 flex-shrink-0" />
+          <span className="relative flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 px-2">
+            <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
+            <span className="hidden sm:inline break-words">FREE SHIPPING ON ORDERS OVER R1,500 | WHATSAPP: 083 416 0993</span>
+            <span className="sm:hidden break-words">FREE SHIPPING R1,500+ | WHATSAPP: 083 416 0993</span>
+            <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
           </span>
         </div>
 

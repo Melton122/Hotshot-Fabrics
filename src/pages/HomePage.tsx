@@ -243,7 +243,7 @@ function HeroSection() {
 
   if (loading) {
     return (
-      <section className="relative h-[70vh] lg:h-[85vh] bg-zinc-900 flex items-center justify-center">
+      <section className="relative h-[60vh] sm:h-[70vh] lg:h-[85vh] bg-zinc-900 flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </section>
     );
@@ -251,20 +251,20 @@ function HeroSection() {
 
   if (error || banners.length === 0) {
     return (
-      <section className="relative h-[70vh] lg:h-[85vh] bg-gradient-to-br from-zinc-900 to-black flex items-center">
+      <section className="relative h-[60vh] sm:h-[70vh] lg:h-[85vh] bg-gradient-to-br from-zinc-900 to-black flex items-center">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6"
           >
-            <Flame className="w-4 h-4" /> New Collection 2026
+            <Flame className="w-3 h-3 sm:w-4 sm:h-4" /> New Collection 2026
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-4"
+            className="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-3 sm:mb-4"
           >
             HOTSHOT<br />FABRICS
           </motion.h1>
@@ -272,7 +272,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg sm:text-xl text-zinc-300 mb-8 max-w-lg"
+            className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-6 sm:mb-8 max-w-lg"
           >
             Premium South African fashion. Quality fabrics, bold designs.
           </motion.p>
@@ -283,9 +283,9 @@ function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setCurrentView("shop")}
-            className="px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-xl font-bold text-lg flex items-center gap-2 transition-colors"
+            className="px-6 py-3 sm:px-8 sm:py-4 bg-orange-500 hover:bg-orange-600 rounded-xl font-bold text-base sm:text-lg flex items-center gap-2 transition-colors"
           >
-            Shop Now <ArrowRight className="w-5 h-5" />
+            Shop Now <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </motion.button>
         </div>
       </section>
@@ -293,15 +293,15 @@ function HeroSection() {
   }
 
   return (
-    <section className="relative h-[70vh] lg:h-[85vh] overflow-hidden">
+    <section className="relative h-[60vh] sm:h-[70vh] lg:h-[85vh] overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0 gpu-layer"
         >
           <img
             src={banners[currentSlide].image_url}
@@ -309,7 +309,7 @@ function HeroSection() {
             className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/50" />
         </motion.div>
       </AnimatePresence>
 
@@ -317,28 +317,28 @@ function HeroSection() {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             key={`text-${currentSlide}`}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="max-w-2xl"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium mb-6">
-              <Flame className="w-4 h-4" /> New Collection 2026
+            <span className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <Flame className="w-3 h-3 sm:w-4 sm:h-4" /> New Collection 2026
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-4">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-3 sm:mb-4">
               {banners[currentSlide].title}
             </h1>
-            <p className="text-lg sm:text-xl text-zinc-300 mb-8">
+            <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-6 sm:mb-8">
               {banners[currentSlide].subtitle}
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setCurrentView("shop")}
-                className="px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-xl font-bold text-lg flex items-center gap-2 transition-colors"
+                className="px-6 py-3 sm:px-8 sm:py-4 bg-orange-500 hover:bg-orange-600 rounded-xl font-bold text-base sm:text-lg flex items-center gap-2 transition-colors"
               >
-                {banners[currentSlide].button_text || "Shop Now"} <ArrowRight className="w-5 h-5" />
+                {banners[currentSlide].button_text || "Shop Now"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
             </div>
           </motion.div>
@@ -347,7 +347,7 @@ function HeroSection() {
 
       {banners.length > 1 && (
         <>
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
             {banners.map((_, i) => (
               <button
                 key={i}
@@ -361,17 +361,17 @@ function HeroSection() {
           </div>
           <button
             onClick={() => setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full items-center justify-center transition-colors"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           <button
             onClick={() => setCurrentSlide((prev) => (prev + 1) % banners.length)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full items-center justify-center transition-colors"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </>
       )}

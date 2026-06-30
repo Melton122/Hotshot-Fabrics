@@ -23,6 +23,13 @@
 }
 
 @layer components {
+  .gpu-layer {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
   .nav-link {
     @apply text-sm font-medium text-zinc-300 hover:text-white transition-colors relative;
   }
