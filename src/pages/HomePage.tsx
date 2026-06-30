@@ -294,53 +294,58 @@ function HeroSection() {
 
   return (
     <section className="relative h-[60vh] sm:h-[70vh] lg:h-[85vh] overflow-hidden">
-      {/* Background images — CSS-only crossfade, no AnimatePresence */}
-      <div className="absolute inset-0">
-        {banners.map((banner, i) => (
-          <div
-            key={i}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              i === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ willChange: 'opacity' }}
-          >
-            <img
-              src={banner.image_url}
-              alt={banner.title}
-              className="w-full h-full object-cover"
-              loading={i === 0 ? 'eager' : 'lazy'}
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        ))}
-      </div>
+      {/* Background images — smooth crossfade only on images */}
+      {banners.map((banner, i) => (
+        <div
+          key={`img-${i}`}
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+            i === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+          aria-hidden={i !== currentSlide}
+        >
+          <img
+            src={banner.image_url}
+            alt={banner.title}
+            className="w-full h-full object-cover"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+      ))}
 
-      {/* Text content — no re-mounting on slide change */}
-      <div className="absolute inset-0 flex items-center">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              <Flame className="w-3 h-3 sm:w-4 sm:h-4" /> New Collection 2026
-            </span>
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-3 sm:mb-4">
-              {banners[currentSlide].title}
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-6 sm:mb-8">
-              {banners[currentSlide].subtitle}
-            </p>
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setCurrentView("shop")}
-                className="px-6 py-3 sm:px-8 sm:py-4 bg-orange-500 hover:bg-orange-600 rounded-xl font-bold text-base sm:text-lg flex items-center gap-2 transition-colors"
-              >
-                {banners[currentSlide].button_text || "Shop Now"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+      {/* Text overlay — instant switch, NO transition on mobile */}
+      {banners.map((banner, i) => (
+        <div
+          key={`text-${i}`}
+          className={`absolute inset-0 flex items-center ${
+            i === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+          aria-hidden={i !== currentSlide}
+        >
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+                <Flame className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" /> New Collection 2026
+              </span>
+              <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-3 sm:mb-4">
+                {banner.title}
+              </h1>
+              <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-6 sm:mb-8">
+                {banner.subtitle}
+              </p>
+              <div className="flex flex-wrap gap-3 sm:gap-4">
+                <button
+                  onClick={() => setCurrentView("shop")}
+                  className="px-6 py-3 sm:px-8 sm:py-4 bg-orange-500 hover:bg-orange-600 active:scale-95 rounded-xl font-bold text-base sm:text-lg flex items-center gap-2 transition-all"
+                >
+                  {banner.button_text || "Shop Now"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ))}
 
       {banners.length > 1 && (
         <>
