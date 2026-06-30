@@ -294,34 +294,31 @@ function HeroSection() {
 
   return (
     <section className="relative h-[60vh] sm:h-[70vh] lg:h-[85vh] overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 gpu-layer"
-        >
-          <img
-            src={banners[currentSlide].image_url}
-            alt={banners[currentSlide].title}
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </motion.div>
-      </AnimatePresence>
+      {/* Background images — CSS-only crossfade, no AnimatePresence */}
+      <div className="absolute inset-0">
+        {banners.map((banner, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              i === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ willChange: 'opacity' }}
+          >
+            <img
+              src={banner.image_url}
+              alt={banner.title}
+              className="w-full h-full object-cover"
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
+        ))}
+      </div>
 
+      {/* Text content — no re-mounting on slide change */}
       <div className="absolute inset-0 flex items-center">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <motion.div
-            key={`text-${currentSlide}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="max-w-2xl"
-          >
+          <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               <Flame className="w-3 h-3 sm:w-4 sm:h-4" /> New Collection 2026
             </span>
@@ -341,13 +338,13 @@ function HeroSection() {
                 {banners[currentSlide].button_text || "Shop Now"} <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {banners.length > 1 && (
         <>
-          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {banners.map((_, i) => (
               <button
                 key={i}
